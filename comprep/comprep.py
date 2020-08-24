@@ -44,10 +44,12 @@ class Comprep:
         self.set("files", [])
         self.register()
 
-    def init(self, command: str):
-        with open("_comprep_template.zsh") as fi:
+    def init(self, command: str, outdir: str = "."):
+        template_path = Path(__file__).parent / "_comprep_template.zsh"
+        with open(template_path) as fi:
             template = fi.read()
-        with open(f"_{self.name}", "w") as fo:
+        out_path = Path(outdir) / f"_{self.name}"
+        with open(out_path, "w") as fo:
             fo.write(template.format(command=self.name,
                                      comp_func=command))
 

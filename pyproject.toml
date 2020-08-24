@@ -3,6 +3,7 @@ name = "comprep"
 version = "0.1.0"
 description = ""
 authors = ["riku.okajima <riku.okajima@gmail.com>"]
+include = ["comprep/_comprep_template.zsh"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
