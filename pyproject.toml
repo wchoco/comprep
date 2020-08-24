@@ -6,6 +6,7 @@ authors = ["riku.okajima <riku.okajima@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+colorama = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
