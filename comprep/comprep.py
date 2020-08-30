@@ -17,6 +17,7 @@ class Comprep:
 
     def files(self, path: Optional[str] = None, ext: Optional[str] = None,
               ty: Optional[str] = None, hide_ext: bool = False,
+              title: Optional[str] = None,
               include_hidden: bool = False) -> None:
         if path is None:
             path = "."
@@ -39,7 +40,9 @@ class Comprep:
         else:
             alt = None
 
-        self.add(choices, alt=alt, title=f"Files in {path}",
+        if title is None:
+            title = f"Files in {path}"
+        self.add(choices, alt=alt, title=title,
                  prefix=path.rstrip("/") + "/")
         self.set("files", [])
         self.register()
@@ -61,6 +64,8 @@ class Comprep:
             ) -> None:
 
         comps = [c if isinstance(c, str) else c[0] for c in choices]
+        if len(comps) == 0:
+            return
         length = max(len(c) for c in comps)
 
         if alt is None:
