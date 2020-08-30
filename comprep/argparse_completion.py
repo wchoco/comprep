@@ -253,7 +253,7 @@ class ArgumentParser(argparse.ArgumentParser):
             alt = [f"{'|'.join(o.option_strings)}" +
                    ("" if o.help is None else f": {o.help}") for o in opts]
             self.comprep.add(choices=opts_name, alt=alt,
-                             title="options")
+                             title="options", oneline=True)
 
 
 class CompleteAction(argparse.Action):

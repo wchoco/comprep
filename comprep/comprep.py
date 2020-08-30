@@ -61,6 +61,7 @@ class Comprep:
             title: Optional[Entry] = None,
             prefix: Optional[str] = None,
             suffix: Optional[str] = None,
+            oneline: bool = False,
             ) -> None:
 
         comps = [c if isinstance(c, str) else c[0] for c in choices]
@@ -85,6 +86,8 @@ class Comprep:
             self.set("prefix", [prefix])
         if suffix is not None:
             self.set("suffix", [suffix])
+        if oneline:
+            self.set("oneline", [])
         self.set("choices", comps)
         self.register()
 
