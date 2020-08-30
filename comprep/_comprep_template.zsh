@@ -4,21 +4,22 @@ function _{command}() {{
         num=$comprep[1]; shift comprep
         params=( ${{comprep[@]:0:$num}} ); shift $num comprep
         args=()
+        choices=( "--" )
         while [ $#params -gt 0 ]; do
             ty=$params[1]; shift params
             n=$params[1]; shift params
             p=( ${{params[@]:0:$n}} ); shift $n params
             case "$ty" in
                 choices)
-                    args+=( $p )
+                    choices+=( $p )
                 ;;
                     description)
                     desc=( $p )
                     args+=( "-d" "desc" )
                 ;;
                 title)
-                    args+=( "-J" $p )
-                    args+=( "-x" $p )
+                    args+=( "-V" $p )
+                    args+=( "-X" $p )
                 ;;
                 prefix)
                     args+=( "-P" $p )
@@ -29,9 +30,12 @@ function _{command}() {{
                 files)
                     args+=( "-f" )
                 ;;
+                oneline)
+                    args+=( "-l" )
+                ;;
             esac
         done
-        compadd $args
+        compadd $args $choices
     done
 }}
 

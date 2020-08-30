@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "comprep"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["riku.okajima <riku.okajima@gmail.com>"]
 include = ["comprep/_comprep_template.zsh"]
